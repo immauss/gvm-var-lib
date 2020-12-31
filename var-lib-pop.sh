@@ -8,7 +8,7 @@
 # The directory structure used here is for my openvas docker image.
 # https://github.com/immauss/openvas
 # YMMV for other setups.
-TARURL=""
+TARURL="https://github.com/immauss/gvm-var-lib/raw/main/var-lib.tar.xz"
 if [ -f ./var-lib.tar.xz ]; then
 	echo "No archive found. Would you like to download it now?"
 	read junk
