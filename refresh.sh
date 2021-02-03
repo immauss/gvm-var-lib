@@ -4,13 +4,17 @@
 # This should run from a cron with a long enough sleep to make sure
 # the gvmd has updated the DB before creating the archive and pushing
 # to github.
-TWD="/tmp"
+TWD="/var/lib/openvas"
 WD=$(pwd)
 CNAME="openvas-base-data" # name of the container running for updates.
 STIME="15m" # time between resync and archiving.
 
 echo "Restart the container to force an update"
-#docker restart $CNAME
+docker restart $CNAME
+
+
+echo "Sleeping for $STIME to make sure the feeds are updated in the db"
+sleep $STIME
 
 cd $TWD
 echo "First copy the feeds from the container"
