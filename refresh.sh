@@ -20,7 +20,8 @@ cd $TWD
 echo "First copy the feeds from the container"
 docker cp ${CNAME}:/data/var-lib .
 echo "Now dump the db from postgres"
-docker exec -i $CNAME su -c "/usr/lib/postgresql/12/bin/pg_dump gvmd" postgres > ./base.sql 
+#docker exec -i $CNAME su -c "/usr/lib/postgresql/12/bin/pg_dump gvmd" postgres > ./base.sql 
+docker exec -i $CNAME su -c "/usr/lib/postgresql/12/bin/pg_dumpall" postgres > ./base.sql 
 
 echo "Compress and archive the data"
 tar cJf var-lib.tar.xz var-lib
