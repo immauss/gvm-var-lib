@@ -10,11 +10,11 @@ CNAME="openvas-base-data" # name of the container running for updates.
 STIME="15m" # time between resync and archiving.
 
 echo "Restart the container to force an update"
-docker restart $CNAME
+#docker restart $CNAME
 
 
 echo "Sleeping for $STIME to make sure the feeds are updated in the db"
-sleep $STIME
+#sleep $STIME
 
 cd $TWD
 echo "First copy the feeds from the container"
@@ -35,3 +35,4 @@ rm -rf var-lib
 cd $WD
 echo "All done!"
 ls -l *.xz
+git push
