@@ -4,6 +4,7 @@
 # This should run from a cron with a long enough sleep to make sure
 # the gvmd has updated the DB before creating the archive and pushing
 # to github.
+BUILDDIR="/home/scott/Projects/openvas"
 TWD="/var/lib/openvas"
 WD=$(pwd)
 CNAME="openvas-base-data" # name of the container running for updates.
@@ -37,4 +38,10 @@ echo "All done!"
 ls -l *.xz
 DATE=$(date)
 git commit -a -m "Data update for $DATE"
+git push
+
+cd $BUILDDIR
+touch Dockerfile
+echo $DATE > .base-ts
+git commit -a -m "Data update for $Date"
 git push
